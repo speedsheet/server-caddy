@@ -1,0 +1,272 @@
+# Caddy
+
+A https web server written in Go. Provides proxy service, load balancing, static content delivery.
+
+<m>[Description]<>
+
+<m>[Index]<>
+
+<m>[Basics]<>
+
+
+
+# Online Documents
+@
+@ online-docs-only, docs-only
+
+
+### Official Site
+<l>https://caddyserver.com/<>
+
+
+### Official Documents
+<l>https://caddyserver.com/docs/<>
+
+
+### Official Downloads
+<l>https://caddyserver.com/download<>
+
+
+### Official Source (Github)
+<l>https://github.com/caddyserver/caddy<>
+
+
+
+# Fundamentals
+@
+@ fundamentals-only
+
+
+
+### Configuration File
+
+<cb>caddy.json<>
+
+See Settings: <l>https://caddyserver.com/docs/json/<>
+@
+@ caddy.json, server settings
+
+
+
+### Link - Local
+
+<cb>http://localhost:2019<>
+
+
+
+### Link - Local Configuration
+
+<cb>http://localhost:2019/config/<>
+
+
+
+# Install
+
+
+### Install with Docker
+
+<cb>docker pull caddy<>
+
+
+Docker Docs: <l https://hub.docker.com/_/caddy>Caddy<>
+
+
+
+### Install with Homebrew
+
+<cb>brew install caddy<>
+@
+@ macos
+
+
+
+### Install with Yum
+
+<cb>yum install yum-plugin-copr
+yum copr enable @caddy/caddy
+yum install caddy<>
+
+Installs On:
+
+<*>Amazon Linux
+Fedora
+RedHat
+CentOS<>
+@
+@ aws, amazon, red had, fedora, centos
+
+
+
+# Commands
+@
+@ caddy
+
+
+### Caddy - Version
+
+<cb>caddy version<>
+
+
+
+### Server - Start
+
+From Content Directory:
+
+<cb>caddy start<>
+
+
+
+### Server - Start as Daemon
+
+<cb>caddy run
+
+caddy run --listen :<v>port<><>
+@
+@ run
+
+
+
+### Server - Start as File Server
+
+From Content Directory:
+
+<cb>caddy file-server
+
+caddy file-server --listen :<v>port<><>
+
+
+@
+@ file-server
+
+
+
+### Server - Start / Set Config file
+
+<cb>caddy <v>...<> --config <v>path<>/<v>config_name.json<><>
+@
+@ start, --config
+
+
+
+### Server - Start / Set Content Directory
+
+<cb>caddy <v>...<> --root <v>content_path<><>
+@
+@ file-server, --root
+
+
+
+### Server - Start / Set Port
+
+<cb>caddy <v>...<> --listen :<v>port<><>
+
+Note: Requires ':' in the port number.
+@
+@ file-server, --listen, listener
+
+
+
+### Server - Restart / Load Updated Configuration
+
+<cb>caddy reload<>
+
+
+Reloads caddy and it's configuration.
+
+Reloads with 0 downtime.
+@
+@ live reload, restart, new
+
+
+
+# How To
+@
+@ how-to-only
+
+
+
+# Configuration File
+
+Caddy Docs: <l https://caddyserver.com/docs/json/>caddy.json<><>
+@
+@ configure-only, config-only, conf-only
+
+
+### Config File - Example
+
+caddy.json:
+
+<cb>{
+	"apps": {
+		"http": {
+			"servers": {
+				"example": {
+					"listen": [":<v>8080<>"],
+					"routes": [
+						{
+							"handle": [{
+								"handler": "static_response",
+								"body": "Hello, world!",
+								"root": "<v>/opt/server/content<>"
+							}]
+						}
+					]
+				}
+			}
+		}
+	}
+}<>
+@
+@ caddy.
+
+
+
+# Index - Docker
+
+
+### Caddy - Docker Image (Official)
+<l>https://hub.docker.com/_/caddy<>
+
+
+
+### Caddy - Docker - Default Configuration File
+
+<cb>/etc/caddy/Caddyfile<>
+
+
+This is the default location for the configuration file.
+@
+@ html, path, directory, 
+
+
+
+### Caddy - Docker - Default Content Directory
+
+<cb>/usr/share/caddy<>
+
+
+This is the default directory for html and other web files.
+@
+@ html, path, directory, 
+
+
+
+### Caddy - Docker - Build Custom Image
+
+<cb># note: never use the :latest tag in a production site
+FROM caddy:<v>version<>
+
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY site /srv<>
+
+
+
+# Acronyms
+@
+@ acronym-only, acronyms-only
+
+
+# Terms
+@
+@ term-only, terms-only
+
